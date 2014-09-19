@@ -1,0 +1,20 @@
+<template name="moviesList">
+  <table class="movies">
+    <tr>
+      <th><a class="sorter" data-field="title" data-order="1" href="#">Movie Title
+      <span class="el-icon-caret-up"></span>
+      <span class="el-icon-caret-down"></span></a></th>
+      <th><a class="sorter" data-field="year" data-order="1" href="#">Release Year
+      <span class="el-icon-caret-up"></span>
+      <span class="el-icon-caret-down"></span></a></th>
+      <th><a class="sorter" data-field="genre" data-order="1" href="#">Genre
+      <span class="el-icon-caret-up"></span>
+      <span class="el-icon-caret-down"></span></a></th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    {{#each movies}}
+      {{> movieItem}}
+    {{/each}}
+  </table>
+</template>

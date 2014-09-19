@@ -1,0 +1,30 @@
+<template name="movieSubmit">
+  <section class="add-edit-form">
+    <form action="" class="main">
+      <input type="hidden" name="editing" class="editing" value="false" />
+      <input type="hidden" name="movie_to_edit" class="movie-to-edit" value="false" />
+      <div>
+        <label for="title">Movie Title</label><br>
+        <input type="text" id="title" name="title" placeholder="Gone With the Wind" />
+      </div>
+      <div>
+        <label for="year">Release Year</label><br>
+        <input type="number" id="year" name="year" placeholder="1939" />
+      </div>
+      <div>
+        <label for="genre">Genre</label><br>
+        <select name="genre" id="genre">
+          {{#each genres}}
+          <option value="{{_id}}">{{name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="submitter">
+        <input type="submit" class="btn submit" value="Add/Update Movie" />
+      </div>
+      <div class="cancel">
+        <input type="button" class="btn cancel-button" name="cancel_edit" value="Cancel" />
+      </div>
+    </form>
+  </section>
+</template>

@@ -1,0 +1,10 @@
+<template name="movieItem">
+  
+  <tr class="movie">
+    <td>{{title}}</td>
+    <td>{{year}}</td>
+    <td>{{genre}}</td>
+    <td><a href="{{pathFor 'movieEdit'}}" class="btn edit">Edit</a></td>
+    <td><a href="{{pathFor 'movieDelete'}}" class="btn delete">Delete</a></td>
+  </tr>
+</template>

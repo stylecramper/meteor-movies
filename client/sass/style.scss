@@ -1,0 +1,248 @@
+@import url('http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Allan:700');
+
+@import 'variables';
+@import 'mixins';
+
+/* -------------------------------------------------------------- 
+  General Styles
+-------------------------------------------------------------- */
+
+body {
+  background-color: #fcfcfc;
+  font: normal 400 1em 'droid sans';
+  color: #222;
+}
+
+.container {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.masthead {
+  background-color: #6d787a;
+  background-image: url(images/texture.png), -webkit-gradient(radial, 50% 50%,0,50% 50%,200, from(#4f5d60), to(#6d787a));
+  background-image: url(images/texture.png), -webkit-radial-gradient(50% 50%, #6d787a, #4f5d60);
+  background-image: url(images/texture.png), -moz-radial-gradient(50% 50%, #6d787a, #4f5d60);
+  background-image: url(images/texture.png), -o-radial-gradient(50% 50%, #6d787a, #4f5d60);
+  background-image: url(images/texture.png), -ms-radial-gradient(50% 50%, #6d787a, #4f5d60);
+  background-image: url(images/texture.png), radial-gradient(50% 50%, #6d787a, #4f5d60);
+  
+  h1 {
+    margin: 0;
+    padding: 1em;
+  }
+  
+  .brand {
+    font: normal 700 2em Allan;
+    letter-spacing: 0.0312em;
+    color: #a8b2b4;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px darken($base, 50%);
+  }
+  
+  .fb-link, .fb-user {
+    display: block;
+    position: absolute;
+    top: 160px;
+    right: 1em;
+    background: transparent url(images/fb.png) right top no-repeat;
+    text-decoration: none;
+    
+    &:hover {
+      background-position: right -35px;
+      text-decoration: underline;
+    }
+  }
+  
+  .fb-link {
+    width: 36px;
+    height: 35px;
+    text-indent: -9999px;
+  }
+  
+  .fb-user {
+    width: 120px;
+    height: 24px;
+    padding-top: 12px;
+    color: $base;
+    font-size: 0.75em;
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: 2px 12px;
+  margin-bottom: 0;
+  font-size: 0.875em;
+  line-height: 1.25em;
+  color: #333;
+  text-align: center;
+  text-shadow:  0 1px 1px rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  @include button-background;
+  border: 1px solid #cccccc;
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-bottom-color: #b3b3b3;
+  border-radius: 3px;
+  
+  &.delete {
+    border: 1px solid #c00;
+  }
+  
+  &:hover {
+    background-position: 0 -15px;
+    @include css-transition(background-position, 0.1s, linear);
+  }
+}
+
+/* -------------------------------------------------------------- 
+  END General Styles
+-------------------------------------------------------------- */
+
+/* -------------------------------------------------------------- 
+  Movie List Table Styles
+-------------------------------------------------------------- */
+
+.movies {
+  margin: 1em 0;
+  width: 100%;
+  border: solid 2px $palegreen;
+  
+  tr:nth-child(odd) {
+    background-color: lighten($palegreen, 20%);
+  }
+  
+  tr.editing {
+    background-color: $highlight;
+  }
+  
+  th {
+    padding-left: 1em;
+    border-left: solid $base 1px;
+    background-color: lighten($base, 30%);
+    color: white;
+    text-align: left;
+    
+    &:first-child {
+      border-left-style: none;
+    }
+  }
+  
+  td {
+    padding: 0.5em 1em;
+  }
+}
+
+.sorter {
+  position: relative;
+  display: block;
+  margin-left: -1em;
+  padding: 0.5em 1em;
+  color: white;
+  text-decoration: none;
+  
+  span {
+    position: absolute;
+    top: 8px;
+    right: 1em;
+    color: black;
+    font-size: 0.5em;
+    
+    &.el-icon-caret-down {
+      top: 17px;
+    }
+  }
+  
+  &:hover {
+    background-color: $darkgreen;
+    
+    span {
+      color: $palegreen;
+    }
+  }
+}
+
+/* -------------------------------------------------------------- 
+  END Movie List Table Styles
+-------------------------------------------------------------- */
+
+/* -------------------------------------------------------------- 
+  Add/Edit Form Styles
+-------------------------------------------------------------- */
+
+.add-edit-form {
+  background-color: lighten($darkblue, 70%);
+  padding: 2.5em 0;
+  
+  div {
+    display: inline-block;
+    padding: 0 1em;
+  }
+  
+  label {
+    font-size: 0.75em;
+  }
+  
+  input {
+    background-color: lighten($palegreen, 25%);
+    font-size: 0.75em;
+    color: $base;
+  }
+  
+  select {
+    font-size: 0.75em;
+  }
+  
+  .submit {
+    font-size: 1em;
+  	color : $base;
+  }
+  
+  .cancel {
+    display: none;
+    
+    &.shown {
+      display: inline-block;
+    }
+  }
+}
+
+/* -------------------------------------------------------------- 
+  END Add/Edit Form Styles
+-------------------------------------------------------------- */
+
+/* -------------------------------------------------------------- 
+  Error Presentation Styles
+-------------------------------------------------------------- */
+
+.errors {
+  position: absolute;
+  display: none;
+  top: 145px;
+  left: 1em;
+  padding: 0.5em 3em 0.5em 1em;
+  background-color: rgba(255, 0, 0, 0.4);
+  @include box-shadow(1px, 1px, 1px, 0, rgba(255,255,255,0.6));
+  font-size: 0.875em;
+  color: white;
+  
+  &.shown {
+    display: block;
+  }
+  
+  .close {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+  }
+}
+
+/* -------------------------------------------------------------- 
+  END Error Presentation Styles
+-------------------------------------------------------------- */
